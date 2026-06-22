@@ -2,10 +2,8 @@
 #include <string>
 using namespace std;
 
-// ==============================================
 // ESTRUTURA DO ALUNO
 // guarda todos os dados de um aluno
-// ==============================================
 struct Aluno {
     int matricula;
     string nome;
@@ -15,12 +13,10 @@ struct Aluno {
     double media; // calculada automaticamente na hora de inserir
 };
 
-// ==============================================
 // ESTRUTURA DO NO DA ARVORE
 // cada no guarda um aluno e aponta para
 // os filhos da esquerda e da direita
 // a altura e usada para o balanceamento da AVL
-// ==============================================
 struct No {
     Aluno aluno;
     No* esquerda;
@@ -28,9 +24,7 @@ struct No {
     int altura;
 };
 
-// ==============================================
 // FUNCOES AUXILIARES
-// ==============================================
 
 // retorna a altura de um no
 // se o no for NULL retorna 0
@@ -68,21 +62,13 @@ No* criarNo(Aluno a) {
     return novo;
 }
 
-// ==============================================
 // ROTACOES DA AVL
 // as rotacoes sao usadas para rebalancear
 // a arvore depois de uma insercao
-// ==============================================
 
 // rotacao simples para a direita
 // usada quando o lado esquerdo esta pesado (caso esq-esq)
-//
-//      y                x
-//     / \              / \
-//    x   T3   -->    T1   y
-//   / \                  / \
-//  T1  T2              T2  T3
-//
+
 No* rotacaoDireita(No* y) {
     No* x = y->esquerda;
     No* T2 = x->direita;
@@ -99,13 +85,7 @@ No* rotacaoDireita(No* y) {
 
 // rotacao simples para a esquerda
 // usada quando o lado direito esta pesado (caso dir-dir)
-//
-//    x                  y
-//   / \                / \
-//  T1   y    -->      x   T3
-//      / \           / \
-//     T2  T3        T1  T2
-//
+
 No* rotacaoEsquerda(No* x) {
     No* y = x->direita;
     No* T2 = y->esquerda;
@@ -120,12 +100,10 @@ No* rotacaoEsquerda(No* x) {
     return y; // y vira a nova raiz desse trecho
 }
 
-// ==============================================
 // INSERCAO NA AVL
 // funciona igual a uma BST normal,
 // mas depois de inserir verifica se a arvore
 // ficou desbalanceada e corrige com rotacoes
-// ==============================================
 No* inserir(No* raiz, Aluno a) {
 
     // se chegou em um espaco vazio, cria o no aqui
@@ -172,7 +150,6 @@ No* inserir(No* raiz, Aluno a) {
     return raiz;
 }
 
-// ==============================================
 // BUSCA NA AVL
 // funciona igual a uma BST:
 // se a matricula for menor vai para a esquerda,
@@ -180,7 +157,6 @@ No* inserir(No* raiz, Aluno a) {
 // se encontrar retorna o no
 // como a arvore esta balanceada, a busca
 // e sempre O(log n)
-// ==============================================
 No* buscar(No* raiz, int matricula) {
     // se chegou em NULL, nao encontrou
     if (raiz == NULL) return NULL;
@@ -195,12 +171,10 @@ No* buscar(No* raiz, int matricula) {
         return buscar(raiz->direita, matricula);
 }
 
-// ==============================================
 // PERCURSO EM ORDEM (esquerda -> raiz -> direita)
 // em uma AVL isso lista os nos em ordem
 // crescente de matricula automaticamente,
 // pois os menores ficam sempre a esquerda
-// ==============================================
 void listar(No* raiz) {
     if (raiz == NULL) return;
 
@@ -215,11 +189,9 @@ void listar(No* raiz) {
     listar(raiz->direita);   // depois visita os maiores
 }
 
-// ==============================================
 // MEDIA GERAL DA TURMA
 // percorre toda a arvore somando as medias
 // e contando os alunos
-// ==============================================
 void somarMedias(No* raiz, double& soma, int& cont) {
     if (raiz == NULL) return;
     somarMedias(raiz->esquerda, soma, cont);
@@ -228,9 +200,7 @@ void somarMedias(No* raiz, double& soma, int& cont) {
     somarMedias(raiz->direita, soma, cont);
 }
 
-// ==============================================
 // MAIN — menu interativo
-// ==============================================
 int main() {
 
     No* raiz = NULL; // arvore começa vazia
