@@ -68,7 +68,6 @@ No* criarNo(Aluno a) {
 
 // rotacao simples para a direita
 // usada quando o lado esquerdo esta pesado (caso esq-esq)
-
 No* rotacaoDireita(No* y) {
     No* x = y->esquerda;
     No* T2 = x->direita;
@@ -85,7 +84,6 @@ No* rotacaoDireita(No* y) {
 
 // rotacao simples para a esquerda
 // usada quando o lado direito esta pesado (caso dir-dir)
-
 No* rotacaoEsquerda(No* x) {
     No* y = x->direita;
     No* T2 = y->esquerda;
@@ -204,15 +202,6 @@ void somarMedias(No* raiz, double& soma, int& cont) {
 int main() {
 
     No* raiz = NULL; // arvore começa vazia
-
-    // carrega os alunos de exemplo do enunciado
-    Aluno a1; a1.matricula=2024001; a1.nome="Diego Alves";    a1.curso="Sistemas";        a1.nota1=6.0;  a1.nota2=7.0;  a1.media=(a1.nota1+a1.nota2)/2; raiz=inserir(raiz,a1);
-    Aluno a2; a2.matricula=2024002; a2.nome="Bruno Lima";     a2.curso="Ciencia da Comp"; a2.nota1=7.0;  a2.nota2=6.5;  a2.media=(a2.nota1+a2.nota2)/2; raiz=inserir(raiz,a2);
-    Aluno a3; a3.matricula=2024004; a3.nome="Fernanda Rocha"; a3.curso="Ciencia da Comp"; a3.nota1=10.0; a3.nota2=9.0;  a3.media=(a3.nota1+a3.nota2)/2; raiz=inserir(raiz,a3);
-    Aluno a4; a4.matricula=2024005; a4.nome="Ana Souza";      a4.curso="Sistemas";        a4.nota1=8.0;  a4.nota2=9.0;  a4.media=(a4.nota1+a4.nota2)/2; raiz=inserir(raiz,a4);
-    Aluno a5; a5.matricula=2024008; a5.nome="Carla Mendes";   a5.curso="Eng de Software"; a5.nota1=9.5;  a5.nota2=8.5;  a5.media=(a5.nota1+a5.nota2)/2; raiz=inserir(raiz,a5);
-
-    cout << "5 alunos de exemplo carregados!" << endl;
 
     int opcao;
 
